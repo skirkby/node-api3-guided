@@ -17,11 +17,13 @@
   },
   "homepage": "https://github.com/LambdaSchool/webapi-iii-guided-solution#readme",
   "devDependencies": {
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.4"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.19.3",
+    "helmet": "^3.21.2",
+    "knex": "^0.20.1",
+    "morgan": "^1.9.1",
     "sqlite3": "^4.1.0"
   }
 }
