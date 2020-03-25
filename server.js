@@ -271,6 +271,6 @@ function errorHandler(error, req, res, next) {
 //----------------------------------------------------------------------------//
 //    ERROR HANDLING MIDDLEWARE .USE()
 //----------------------------------------------------------------------------//
-router.use(errorHandler);
+server.use(errorHandler);
 
 module.exports = server;
