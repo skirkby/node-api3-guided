@@ -9,10 +9,11 @@ server.use(express.json());
 server.use(helmet());
 server.use(methodLogger);
 server.use(addName);
+
 server.use('/api/hubs', hubsRouter);
 // server.use(morgan('dev'));
 server.use(time);
-server.use(lockout);
+// server.use(lockout);
 
 server.get('/', (req, res) => {
   const nameInsert = (req.name) ? ` ${req.name}` : '';
@@ -32,8 +33,8 @@ function methodLogger(req, res, next) {
   next();
 }
 
-function addName(req, req, next) {
-  req.name = req.name || req.header('x-name');
+function addName(req, res, next) {
+  req.name = req.name || req.headers['x-name'];
   next();
 }
 
@@ -50,5 +51,9 @@ function time(req, res, next) {
     next();
   }
 }
+
+server.use((error, req, res, next) => {
+  res.status(error.code).json({ message: 'there was an error', error });
+});
 
 module.exports = server;

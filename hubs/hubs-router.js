@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateId, (req, res) => {
   Hubs.remove(req.params.id)
   .then(count => {
     if (count > 0) {
@@ -127,5 +127,34 @@ router.post('/:id/messages', (req, res) => {
     });
   });
 });
+
+//validteId used for any puts/posts with IDs
+
+function validateId(req, res, next) {
+  const { id } = req.params;
+  Hubs.findById(id)
+    .then(hub => {
+      if (hub) {
+        req.hub = hub;
+        next();
+      } else {
+        next({ code: 404, message: 'inavlid hub id' });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      next({ code: 500, message: 'falied to process' });
+    });
+}
+
+//validateBody used for any posts/puts with ids
+
+function validateBody(req, res, next) {
+  if (req.body && Object.keys(req.body).length > 0) {
+    next();
+  } else {
+    res.status(400).json({ message: 'please include a request body' });
+  }
+}
 
 module.exports = router;
