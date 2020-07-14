@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "helmet": "^3.23.3",
     "knex": "^0.19.3",
-    "sqlite3": "^4.1.0"
+    "morgan": "^1.10.0",
+    "sqlite3": "^4.2.0"
   }
 }
