@@ -150,7 +150,7 @@ server.get('/', (req, res, next) => {
 //    FUNCTION METHODLOGGER()
 //----------------------------------------------------------------------------//
 function methodLogger(req, res, next) {
-  console.log(`${req.method} Request`);
+  console.log(`${req.method} Request abcdefg hijk lmnop qrs tuv wx y and z now i know my abcs next time... `);
   next();
 }
 
