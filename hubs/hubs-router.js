@@ -5,6 +5,11 @@ const Messages = require('../messages/messages-model.js');
 
 const router = express.Router();
 
+router.use((req, res, next) => {
+  console.log('in the hubs router');
+  next();
+});
+
 // this only runs if the url has /api/hubs in it
 router.get('/', (req, res) => {
   Hubs.find(req.query)
