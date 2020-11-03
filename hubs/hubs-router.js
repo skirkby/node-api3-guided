@@ -64,30 +64,24 @@ router.get('/', (req, res) => {
     });
 });
 
+// /api/hubs/:id
 
-//----------------------------------------------------------------------------//
-//    USING VALIDATEID() AS MIDDLEWARE...
-//----------------------------------------------------------------------------//
-
-// because this router is bound (in server.js) to the /api/hubs root url, the
-// effective METHOD/url that will trigger this middleware is /api/hubs/:id.
-//
-// note that this method not only supplies the typical arrow function as
-// middleware for the METHOD/url, but it also specifies *another* middleware
-// method (this time by just supplying its name, validateId), as a parameter to
-// .get().
-//
-// validateId() looks up the hub with the id, and if it finds it, it adds the
-// hub object to the req object.
-//
-// That way, we don't have to do another lookup here... we can just use the hub
-// object on req.
-//
-// Compare the contents of this streamlined middleware with what it was
-// before... using middleware allows us to consolidate a lot of repetitive
-// validation and database management. 
-router.get('/:id', validateId, (req, res) => {
-  res.status(200).json(req.hub);
+router.get('/:id', (req, res) => {
+  Hubs.findById(req.params.id)
+    .then(hub => {
+      if (hub) {
+        res.status(200).json(hub);
+      } else {
+        res.status(404).json({ message: 'Hub not found' });
+      }
+    })
+    .catch(error => {
+      // log error to server
+      console.log(error);
+      res.status(500).json({
+        message: 'Error retrieving the hub',
+      });
+    });
 });
 
 
@@ -115,8 +109,11 @@ router.delete('/:id', validateId, (req, res) => {
       }
     })
     .catch(error => {
+      // log error to server
       console.log(error);
-      res.status(500).json({ message: 'Error removing the hub', error });
+      res.status(500).json({
+        message: 'Error removing the hub',
+      });
     });
 });
 
@@ -133,8 +130,11 @@ router.put('/:id', validateId, (req, res) => {
       }
     })
     .catch(error => {
+      // log error to server
       console.log(error);
-      res.status(500).json({ message: 'Error updating the hub', error });
+      res.status(500).json({
+        message: 'Error updating the hub',
+      });
     });
 });
 

@@ -78,3 +78,9 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Mac cruft
+.DS_Store
+
+# VSCode debugger config
+launch.json

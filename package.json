@@ -1,29 +1,28 @@
 {
-  "name": "webapi-iii-guided",
-  "version": "1.0.0",
-  "description": "Guided Project for Web API-III Module",
-  "main": "index.js",
-  "scripts": {
-    "server": "nodemon index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LambdaSchool/webapi-iii-guided-solution.git"
-  },
-  "keywords": [],
-  "author": "Lambda School",
-  "bugs": {
-    "url": "https://github.com/LambdaSchool/webapi-iii-guided-solution/issues"
-  },
-  "homepage": "https://github.com/LambdaSchool/webapi-iii-guided-solution#readme",
-  "devDependencies": {
-    "nodemon": "^1.19.4"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "helmet": "^3.21.2",
-    "knex": "^0.20.1",
-    "morgan": "^1.9.1",
-    "sqlite3": "^4.1.0"
-  }
+    "name": "node-api3-guided",
+    "version": "1.0.0",
+    "description": "Guided Project for Node API 3 Module",
+    "main": "index.js",
+    "scripts": {
+        "server": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LambdaSchool/node-api3-guided-solution.git"
+    },
+    "keywords": [],
+    "author": "Lambda School",
+    "bugs": {
+        "url": "https://github.com/LambdaSchool/node-api3-guided-solution/issues"
+    },
+    "homepage": "https://github.com/LambdaSchool/node-api3-guided-solution#readme",
+    "devDependencies": {
+        "eslint": "^7.12.1",
+        "nodemon": "^2.0.6"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "knex": "^0.21.8",
+        "sqlite3": "^5.0.0"
+    }
 }
