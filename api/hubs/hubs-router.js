@@ -99,6 +99,10 @@ router.get('/:id', validateId, (req, res) => {
   res.status(200).json(req.hub);
 });
 
+// const hc = require('./hubs-controller.js');
+// router.get('/:id', hc.validateId, hc.getIdFunction);
+// router.delete('/:id', hc.validateId, hc.deleteIdFunction);
+
 //----------------------------------------------------------------------------//
 // POST HANDLER ... NEEDS requiresBody()!
 //----------------------------------------------------------------------------//
@@ -234,7 +238,7 @@ function validateId(req, res, next) {
     .then(hub => {
       if (hub) {
         req.hub = hub;
-        next();
+        next(somevalue);
       } else {
         // res.status(404).json({ message: 'does not exist' });
         next(new Error('does not exist'));
